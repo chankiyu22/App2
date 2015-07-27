@@ -1,7 +1,15 @@
 deploy:
-  provider: FTP
-  protocol: ftp
-  host: 14.198.136.202
-  username: xyz
-  password: pkpkppk
-  folder: app2
+  - provider: FTP
+    protocol: ftp
+    host: 14.198.136.202
+    username: xyz
+    password: pkpkppk
+	folder:
+	application: App2
+
+  - provider: Github
+    draft: false
+	prerelease: false
+	on:
+	  branch: master
+	  appveyor_repo_tag: true
