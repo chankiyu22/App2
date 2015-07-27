@@ -4,12 +4,12 @@ deploy:
     host: 14.198.136.202
     username: xyz
     password: pkpkppk
-	folder:
-	application: App2
+    folder:
+    application: App2
 
   - provider: Github
     draft: false
-	prerelease: false
-	on:
-	  branch: master
-	  appveyor_repo_tag: true
+    prerelease: false
+    on:
+      branch: master
+      appveyor_repo_tag: true
