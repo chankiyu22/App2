@@ -1,5 +1,5 @@
 artifacts:
-  - path: App2\bin\($configuration)
+  - path: App2\bin\$(configuration)
     name: App2
 
 deploy:
