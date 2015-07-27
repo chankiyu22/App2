@@ -1,6 +1,6 @@
 deploy:
   provider: FTP
-  protocol: ftps
+  protocol: ftp
   host: 14.198.136.202
   username: xyz
   password: pkpkppk
