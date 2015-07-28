@@ -24,9 +24,11 @@ deploy_script:
 
     $bodyLines = (
         "--$boundary",
-        "Content-Disposition: form-data; name=`"ipa`"$LF",
+        "Content-Disposition: form-data; name=`"zip`"$LF",
         $fileEnc,
         "--$boundary--$LF"
     ) -join $LF
 
-    Invoke-RestMethod https://rink.hockeyapp.net/api/2/apps/upload -Method Post -ContentType "multipart/form-data; boundary=`"$boundary`"" -Body $bodyLines -Headers $headers
+    Invoke-RestMethod https://rink.hockeyapp.net/api/2/apps/upload -Method Post
+    -ContentType "multipart/form-data; boundary=`"$boundary`""
+    -Body $bodyLines -Headers $headers
