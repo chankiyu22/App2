@@ -24,10 +24,8 @@ deploy_script:
 
     $body = @{status='2';ipa=$fileEnc}
 
-    $cred = Get-Credential
+    [System.Net.ServicePointManager]::ServerCertificateValidationCallback = { $true }
 
     Invoke-RestMethod https://rink.hockeyapp.net/api/2/apps/00b9b42e03c2f787077bd5d13ccf146d/app_versions
     -Method Post
-    -ContentType "multipart/form-data; boundary=`"$boundary`""
-    -Credential $cred
     -Body $body -Headers $headers
