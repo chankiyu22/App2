@@ -7,7 +7,7 @@ artifacts:
   type: zip
 on_success:
 - ps: >-
-    $fileBin = [IO.File]::ReadAllBytes("C:\projects\app2\App2\App2.zip")
+    $fileBin = [IO.File]::ReadAllBytes(".\App2\App2.zip")
 
     $enc = [System.Text.Encoding]::GetEncoding("iso-8859-1")
 
@@ -19,6 +19,7 @@ on_success:
     $LF = "`n"
 
     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+
     $headers.Add("X-HockeyAppToken", "4fa71bd6299744759e2d5ac954115ae3")
 
     $bodyLines = (
