@@ -5,9 +5,9 @@ artifacts:
 - path: App2\AppPackages
   name: App2
   type: zip
-on_success:
+deploy_script:
 - ps: >-
-    $fileBin = [IO.File]::ReadAllBytes(".\App2\App2.zip")
+    $fileBin = [IO.File]::ReadAllBytes("%APPVEYOR_BUILD_FOLDER%\App2\App2.zip")
 
     $enc = [System.Text.Encoding]::GetEncoding("iso-8859-1")
 
@@ -29,4 +29,4 @@ on_success:
         "--$boundary--$LF"
     ) -join $LF
 
-    Invoke-RestMethod -Url https://rink.hockeyapp.net/api/2/apps/upload -Method Post -ContentType "multipart/form-data; boundary=`"$boundary`"" -Body $bodyLines -Headers $headers
+    Invoke-RestMethod https://rink.hockeyapp.net/api/2/apps/upload -Method Post -ContentType "multipart/form-data; boundary=`"$boundary`"" -Body $bodyLines -Headers $headers
