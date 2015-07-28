@@ -11,6 +11,8 @@ deploy_script:
 
     Write-Host $artifacts["App2"]
 
+    Write-Host $artifacts["App2"].path
+
     Write-Host $artifacts["App2"].url
 
     $enc = [System.Text.Encoding]::GetEncoding("iso-8859-1")
