@@ -18,6 +18,9 @@ on_success:
 
     $LF = "`n"
 
+	$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+	$headers.Add("X-HockeyAppToken", "4fa71bd6299744759e2d5ac954115ae3")
+
     $bodyLines = (
         "--$boundary",
         "Content-Disposition: form-data; name=`"ipa`"$LF",
@@ -25,4 +28,4 @@ on_success:
         "--$boundary--$LF"
     ) -join $LF
 
-    Invoke-RestMethod -Url https://rink.hockeyapp.net/api/2/apps/upload -Method Post -ContentType "multipart/form-data; boundary=`"$boundary`"" -Body $bodyLines -Headers @{X-HockeyAppToken="4fa71bd6299744759e2d5ac954115ae3"}
+    Invoke-RestMethod -Url https://rink.hockeyapp.net/api/2/apps/upload -Method Post -ContentType "multipart/form-data; boundary=`"$boundary`"" -Body $bodyLines -Headers $headers
