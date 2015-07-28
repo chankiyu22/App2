@@ -22,7 +22,7 @@ deploy_script:
 
     $headers.Add("X-HockeyAppToken", "9e1f829fc8ec4ad3a6fe1f289635068a")
 
-    $body = "status=$(status)&zip=$(fileEnc)"
+    $body = "status=2&zip={0}" -f $fileEnc
 
     Invoke-RestMethod https://rink.hockeyapp.net/api/2/apps/00b9b42e03c2f787077bd5d13ccf146d/app_versions
     -Method Post
