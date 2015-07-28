@@ -18,8 +18,8 @@ on_success:
 
     $LF = "`n"
 
-	$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-	$headers.Add("X-HockeyAppToken", "4fa71bd6299744759e2d5ac954115ae3")
+    $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+    $headers.Add("X-HockeyAppToken", "4fa71bd6299744759e2d5ac954115ae3")
 
     $bodyLines = (
         "--$boundary",
