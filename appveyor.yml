@@ -9,12 +9,6 @@ deploy_script:
 - ps: >-
     $fileBin = [IO.File]::ReadAllBytes($artifacts["App2"].path)
 
-    Write-Host $artifacts["App2"]
-
-    Write-Host $artifacts["App2"].path
-
-    Write-Host $artifacts["App2"].url
-
     $enc = [System.Text.Encoding]::GetEncoding("iso-8859-1")
 
     $fileEnc = $enc.GetString($fileBin)
@@ -26,12 +20,15 @@ deploy_script:
 
     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 
-    $headers.Add("X-HockeyAppToken", "4fa71bd6299744759e2d5ac954115ae3")
+    $headers.Add("X-HockeyAppToken", "9e1f829fc8ec4ad3a6fe1f289635068a")
 
     $bodyLines = (
         "--$boundary",
         "Content-Disposition: form-data; name=`"zip`"$LF",
         $fileEnc,
+        "--$boundary",
+        "Content-Disposition: form-data; name=`"status`"$LF",
+        "2",
         "--$boundary--$LF"
     ) -join $LF
 
