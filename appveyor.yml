@@ -35,7 +35,7 @@ deploy_script:
         "--$boundary--$LF"
     ) -join $LF
 
-    Invoke-RestMethod https://rink.hockeyapp.net/api/2/apps/upload/00b9b42e03c2f787077bd5d13ccf146d/app_versions
+    Invoke-RestMethod https://rink.hockeyapp.net/api/2/apps/00b9b42e03c2f787077bd5d13ccf146d/app_versions
     -Method Post
     -ContentType "multipart/form-data; boundary=`"$boundary`""
     -Body $bodyLines -Headers $headers
