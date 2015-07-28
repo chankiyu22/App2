@@ -3,21 +3,3 @@ artifacts:
     name: App2
     type: zip
 
-on_success:
-  - ps: |
-  if($true) {
-    $fileBin = [IO.File]::ReadAllBytes("App2.zip")
-    $enc = [System.Text.Encoding]::GetEncoding("iso-8859-1")
-    $fileEnc = $enc.GetString($fileBin)
-
-    $boundary = [System.Guid]::NewGuid().ToString()
-    $LF = "`n"
-    $bodyLines = (
-        "--$boundary",
-        "Content-Disposition: form-data; name=`"ipa`"$LF",
-        $fileEnc,
-        "--$boundary--$LF"
-    ) -join $LF
-    Invoke-RestMethod -Url https://rink.hockeyapp.net/api/2/apps/upload -Method Post -ContentType "multipart/form-data; boundary=`"$boundary`"" -Body $bodyLines -Headers @{X-HockeyAppToken: "9e1f829fc8ec4ad3a6fe1f289635068a"}
-  }
-
