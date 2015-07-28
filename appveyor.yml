@@ -5,6 +5,7 @@ artifacts:
 
 on_success:
   - ps: |
+  if($true) {
     $fileBin = [IO.File]::ReadAllBytes("App2.zip")
     $enc = [System.Text.Encoding]::GetEncoding("iso-8859-1")
     $fileEnc = $enc.GetString($fileBin)
@@ -18,4 +19,5 @@ on_success:
         "--$boundary--$LF"
     ) -join $LF
     Invoke-RestMethod -Url https://rink.hockeyapp.net/api/2/apps/upload -Method Post -ContentType "multipart/form-data; boundary=`"$boundary`"" -Body $bodyLines -Headers @{X-HockeyAppToken: "9e1f829fc8ec4ad3a6fe1f289635068a"}
+  }
 
