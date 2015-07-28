@@ -5,9 +5,9 @@ artifacts:
 - path: App2\AppPackages
   name: App2
   type: zip
-deploy_script:
+on_success:
 - ps: >-
-    $fileBin = [IO.File]::ReadAllBytes("App2.zip")
+    $fileBin = [IO.File]::ReadAllBytes("App2\App2.zip")
 
     $enc = [System.Text.Encoding]::GetEncoding("iso-8859-1")
 
