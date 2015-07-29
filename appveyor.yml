@@ -7,7 +7,15 @@ artifacts:
   type: zip
 deploy_script:
 - ps: >-
-    $fileBin = [IO.File]::ReadAllBytes($artifacts["App2"].path)
+    $filePath = $artifacts["App2"].path
+
+    $path = $filePath.Split("\")
+
+    $length = $path.Length
+
+    $fileName = $path[$length - 1]
+
+    $fileBin = [IO.File]::ReadAllBytes($filePath)
 
     $enc = [System.Text.Encoding]::GetEncoding("iso-8859-1")
 
@@ -24,7 +32,7 @@ deploy_script:
 
     $bodyLines = (
         "--$boundary",
-        "Content-Disposition: form-data; name=`"ipa`"; filename=`"$artifacts[`"App2`"].path`"",
+        "Content-Disposition: form-data; name=`"ipa`"; filename=`"$fileName`"",
         "Content-Type: application/octet-stream$LF",
         $fileEnc,
         "--$boundary",
