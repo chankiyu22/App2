@@ -24,7 +24,7 @@ deploy_script:
 
     $bodyLines = (
         "--$boundary",
-        "Content-Disposition: form-data; name=`"ipa`"; filename=`"$artifacts["App2"].path`"",
+        "Content-Disposition: form-data; name=`"ipa`"; filename=`"$artifacts[`"App2`"].path`"",
         "Content-Type: application/octet-stream$LF",
         $fileEnc,
         "--$boundary",
