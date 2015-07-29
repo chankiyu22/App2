@@ -8,4 +8,5 @@ artifacts:
 deploy_script:
 - ps: >-
     . ".\scripts\build-config.ps1"
+
     . ".\scripts\deploy-script.ps1"
