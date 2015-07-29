@@ -1,5 +1,3 @@
-. ".\build-config.ps1"
-
 $filePath = $artifacts[$appName].path
 
 $path = $filePath.Split("\")
